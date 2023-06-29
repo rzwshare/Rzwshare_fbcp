@@ -1,0 +1,29 @@
+j=$(uname -n)
+echo "The operating system :$j"
+if test "$j" = "raspberrypi";then
+
+    if [ -d "/home/pi/Rzwshare_fbcp/build" ]; then
+        sudo rm -rf /home/pi/Rzwshare_fbcp/build
+    fi
+    mkdir /home/pi/Rzwshare_fbcp/build
+    sudo apt-get update
+    sudo apt-get install cmake -y
+    sudo apt-get install p7zip-full -y
+    sudo cp /home/pi/Rzwshare_fbcp/shell/boot/rzwshare-3inch5.txt /boot/config.txt
+    sudo cp /home/pi/Rzwshare_fbcp/shell/etc/rc.local /etc/rc.local
+
+    cd /home/pi/Rzwshare_fbcp/build
+    sudo cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DRZWSHARE_3INCH5_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0   ..
+    #sudo cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DRZWSHARE_3INCH5_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0  -DGPIO_TFT_DATA_CONTROL=25  -DGPIO_TFT_BACKLIGHT=24 -DGPIO_TFT_RESET_PIN=27 ..
+	sudo make -j
+    if [ -x "/usr/local/bin/fbcp" ]; then
+    sudo rm -rf /usr/local/bin/fbcp
+    fi
+    sudo cp ./fbcp /usr/local/bin/fbcp
+
+    echo "The system is configured."
+    echo "The system will restart."
+    sudo reboot
+else
+echo "The shell only works with RaspberryPi"
+fi
