@@ -20,7 +20,7 @@ although not all boards are actively tested on, so ymmv especially on older boar
 
 ## Tested Displays
 * [RZWSHARE_1INCH4_LCD]with ST7789V2 controller
-* [WAVESHARE_3INCH5_LCD_HAT]with ST7796U controller
+* [RZWSHARE_3INCH5_LCD_HAT]with ST7796U controller
 
 ## How to use
 ### Installation
@@ -38,7 +38,7 @@ Run in the console of your Raspberry Pi:
 ```
 cd ~
 sudo apt-get install cmake -y
-git clone https://github.com/liuqing925/rzwshare.git
+git clone https://github.com/rzwshare/Rzwshare_fbcp.git
 cd Rzwshare_fbcp
 mkdir build
 cd build 
@@ -70,13 +70,13 @@ If you have been running existing `fbcp` driver, make sure to remove that e.g. v
 If you are using the LCD module of RzwShare, you can use the following commands(I have adapted it for you)
 ```
 #ST7789V2
-cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_1INCH4_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
+cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DRZWSHARE_1INCH4_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
 
 #ST7796U
-cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_3INCH15_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
+cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DRZWSHARE_3INCH5_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
 
 #IL9341
-cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_2INCH4_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
+cmake -DSPI_BUS_CLOCK_DIVISOR=20 -DRZWSHARE_2INCH4_LCD=ON -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0 ..
 ```
 Other**[options]** You can check out [juj/fbcp-ili9341](https://github.com/juj/fbcp-ili9341) for help.
 ### License
