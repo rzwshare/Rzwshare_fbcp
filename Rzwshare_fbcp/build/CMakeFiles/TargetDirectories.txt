@@ -1,3 +1,0 @@
-/home/pi/Rzwshare_fbcp/build/CMakeFiles/rebuild_cache.dir
-/home/pi/Rzwshare_fbcp/build/CMakeFiles/fbcp.dir
-/home/pi/Rzwshare_fbcp/build/CMakeFiles/edit_cache.dir
